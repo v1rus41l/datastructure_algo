@@ -62,6 +62,57 @@ class LinkedList:
         new_node.next_node = self.head
         self.head = new_node
 
+    def insert(self, data, index):
+        """
+        Insert a new Node containing data at `index` position jn the list
+        Insertion takes O(1) time but finding the node at the
+        insertion point takes O(n) time.
+
+        Takes overall O(n) time
+        """
+        if index == 0:
+            self.head = Node(data)
+
+        if index > 0:
+            new_node = Node(data)
+
+            position = index
+            current = self.head
+
+            while position > 1:
+                current = current.next_node
+                position -= 1
+
+            prev_node = current
+            next_node = current.next_node
+
+            prev_node.next_node = new_node
+            new_node.next_node = next_node
+
+    def remove(self, key):
+        """
+        Removes Node containing datan that matches the key
+        Returns the node or None of key doesn't exist
+
+        Takes O(n) time
+        """
+        current = self.head
+        previous = None
+        found = False
+
+        while current and not found:
+            if current.data == key and current == self.head:
+                found = True
+                self.head = current.next_node
+            elif current.data == key:
+                found = True
+                previous.next_node = current.next_node
+            else:
+                previous = current
+                current = current.next_node
+        return current
+
+
     def seacrh(self, key):
         """
         Seacrh for the first node containing data that matches the key
