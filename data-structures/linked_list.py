@@ -71,7 +71,7 @@ class LinkedList:
         Takes overall O(n) time
         """
         if index == 0:
-            self.head = Node(data)
+            self.add(data)
 
         if index > 0:
             new_node = Node(data)
@@ -91,7 +91,7 @@ class LinkedList:
 
     def remove(self, key):
         """
-        Removes Node containing datan that matches the key
+        Removes Node containing data that matches the key
         Returns the node or None of key doesn't exist
 
         Takes O(n) time
