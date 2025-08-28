@@ -61,3 +61,21 @@ class LinkedList:
         new_node = Node(data)
         new_node.next_node = self.head
         self.head = new_node
+
+    def seacrh(self, key):
+        """
+        Seacrh for the first node containing data that matches the key
+        Return the node or None if not found
+
+        Takes O(n) time
+        """
+
+        current = self.head
+
+        while current:
+            if current.data == key:
+                return current
+            else:
+                current = current.next_node
+
+        return None
